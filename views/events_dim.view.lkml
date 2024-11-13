@@ -825,16 +825,103 @@ view: events_dim {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	custom_dim_module_name,
-	device_mobile_model_name,
-	traffic_source_name,
-	device_mobile_brand_name,
-	custom_dim_author_name,
-	event_dimensions_hostname,
-	collected_traffic_source_manual_campaign_name,
-	event_name,
-	custom_dim_poll_name
-	]
+  custom_dim_module_name,
+  device_mobile_model_name,
+  traffic_source_name,
+  device_mobile_brand_name,
+  custom_dim_author_name,
+  event_dimensions_hostname,
+  collected_traffic_source_manual_campaign_name,
+  event_name,
+  custom_dim_poll_name
+  ]
   }
-
+  measure: video_completes {
+    type: sum
+    sql: ${TABLE}.video_completes_flag ;;
+  }
+  measure: account_conversions {
+    type: sum
+    sql: ${TABLE}.flag_account_conversions ;;
+  }
+  measure: auto_refreshes {
+    type: sum
+    sql: ${TABLE}.flag_auto_refreshes ;;
+  }
+  measure: banner_conversions {
+    type: sum
+    sql: ${TABLE}.flag_banner_conversions ;;
+  }
+  measure: free_article_views {
+    type: sum
+    sql: ${TABLE}.flag_free_article_views ;;
+  }
+  measure: has_been_paywalled_article_views {
+    type: sum
+    sql: ${TABLE}.flag_has_been_paywalled_article_views ;;
+  }
+  measure: image_views {
+    type: sum
+    sql: ${TABLE}.flag_image_views ;;
+  }
+  measure: internal_searches {
+    type: sum
+    sql: ${TABLE}.flag_internal_searches ;;
+  }
+  measure: is_paywalled_for_others_article_views {
+    type: sum
+    sql: ${TABLE}.flag_is_paywalled_for_others_article_views ;;
+  }
+  measure: paywall_article_views {
+    type: sum
+    sql: ${TABLE}.flag_paywall_article_views ;;
+  }
+  measure: paywall_clicks {
+    type: sum
+    sql: ${TABLE}.flag_paywall_clicks ;;
+  }
+  measure: paywall_conversions {
+    type: sum
+    sql: ${TABLE}.flag_paywall_conversions ;;
+  }
+  measure: paywall_impressions {
+    type: sum
+    sql: ${TABLE}.flag_paywall_impressions ;;
+  }
+  measure: paywall_views {
+    type: sum
+    sql: ${TABLE}.flag_paywall_views ;;
+  }
+  measure: social_share_clicks {
+    type: sum
+    sql: ${TABLE}.flag_social_share_clicks ;;
+  }
+  measure: total_page_views {
+    type: sum
+    sql: ${TABLE}.page_view_flag ;;
+  }
+  measure: total_video_views {
+    type: sum
+    sql: ${video_view_flag} ;;
+  }
+  measure: visits {
+    type:  count_distinct
+    sql: ${unique_session_id} ;;
+  }
+  measure: users {
+    type:  count_distinct
+    sql: ${user_pseudo_id} ;;
+  }
+  measure: video_25_views {
+    type:  sum
+    sql: ${video_25_views_flag} ;;
+  }
+  measure: video_50_views {
+    type:  sum
+    sql: ${video_25_views_flag} ;;
+  }
+  measure: total_article_views{
+    type: sum
+    sql: ${flag_article_views} ;;
+  }
 }
