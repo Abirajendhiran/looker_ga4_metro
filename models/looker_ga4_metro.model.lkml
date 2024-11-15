@@ -25,5 +25,4 @@ persist_with: looker_ga4_metro_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: events_dim {}
-
+explore: GA4 {}
