@@ -260,10 +260,9 @@ view: GA4 {
   }
   dimension: stream_name{
     type: string
-    sql: CASE WHEN ${stream_id} = '8199972794' THEN 'MOL Web'
-              WHEN ${stream_id} = '8263896244' THEN 'MOL Android'
-              WHEN ${stream_id} = '8263901488' THEN 'TIM iOS'
-              WHEN ${stream_id} = '8263911425' THEN 'MOL iOS'
+    sql: CASE WHEN ${platform} = 'WEB' THEN 'Metro Web'
+              WHEN ${platform} = 'ANDROID' THEN 'Metro Android'
+              WHEN ${platform} = 'IOS' THEN 'Metro iOS'
               ELSE 'NA' END;;
   }
   dimension: region {
