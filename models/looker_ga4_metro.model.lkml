@@ -25,4 +25,13 @@ persist_with: looker_ga4_metro_default_datagroup
 # Typically, join parameters require that you define the join type, join relationship, and a sql_on clause.
 # Each joined view also needs to define a primary key.
 
-explore: GA4 {}
+explore: GA4{
+  join: articles {
+    relationship: many_to_one
+    sql_on: ${GA4.article_id}=${articles.id} ;;
+  }
+  join: video {
+    relationship: many_to_one
+    sql_on: ${GA4.video_internal_id}=${video.video_id} ;;
+  }
+}

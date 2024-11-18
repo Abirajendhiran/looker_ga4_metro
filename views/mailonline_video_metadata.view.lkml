@@ -1,4 +1,4 @@
-view: mailonline_video_metadata {
+view: video {
   sql_table_name: `dmg-analytics-looker.looker_ga4_metro_model.metro_video_metadata`  ;;
 
   dimension: ads_enabled {

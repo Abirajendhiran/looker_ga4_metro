@@ -1,4 +1,4 @@
-view: metro_articles_metadata {
+view: articles {
   sql_table_name: `dmg-analytics-looker.looker_ga4_metro_model.metro_articles_metadata` ;;
   drill_fields: [id]
 
