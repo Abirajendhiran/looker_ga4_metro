@@ -28,7 +28,7 @@ persist_with: looker_ga4_metro_default_datagroup
 explore: GA4{
   join: articles {
     relationship: many_to_one
-    sql_on: ${GA4.article_id}=CAST(${articles.id} AS NUMBER) ;;
+    sql_on: ${GA4.article_id}=CAST(${articles.id} AS STRING) ;;
   }
   join: video {
     relationship: many_to_one
