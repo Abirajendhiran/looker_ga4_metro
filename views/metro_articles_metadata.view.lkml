@@ -4,7 +4,7 @@ view: articles {
 
   dimension: id {
     primary_key: yes
-    type: number
+    type: string
     sql: ${TABLE}.id ;;
   }
   dimension: authors_name {
