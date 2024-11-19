@@ -113,7 +113,7 @@ view: GA4 {
     type: string
     sql: ${TABLE}.event_name ;;
   }
-  dimension: video_internal_id {
+  dimension: video_id {
     type: string
     sql: ${TABLE}.dim_calc_video_internal_id ;;
   }
@@ -384,7 +384,7 @@ view: GA4 {
     hidden: yes
     sql:${TABLE}.page_view_flag ;;
   }
-  measure: count {
+  measure: events_count {
     type: sum
     sql: ${event_name} ;;
   }

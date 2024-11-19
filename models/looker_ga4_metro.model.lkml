@@ -32,6 +32,6 @@ explore: GA4{
   }
   join: video {
     relationship: many_to_one
-    sql_on: ${GA4.video_internal_id}=${video.video_id} ;;
+    sql_on: ${GA4.video_id}=${video.video_id} ;;
   }
 }
