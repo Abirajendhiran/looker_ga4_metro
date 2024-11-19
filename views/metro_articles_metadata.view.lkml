@@ -3,7 +3,6 @@ view: articles {
   drill_fields: [id]
 
   dimension: id {
-    primary_key: yes
     type: string
     sql: ${TABLE}.id ;;
   }
