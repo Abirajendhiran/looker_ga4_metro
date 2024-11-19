@@ -248,6 +248,7 @@ view: video {
   }
   dimension: video_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.video_id ;;
   }
   dimension: video_platform {

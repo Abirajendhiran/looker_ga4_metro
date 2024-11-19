@@ -3,6 +3,7 @@ view: articles {
 
   dimension: id {
     type: string
+    hidden: yes
     sql: ${TABLE}.id ;;
   }
   dimension: authors_name {
