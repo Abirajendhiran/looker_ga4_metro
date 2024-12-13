@@ -384,9 +384,8 @@ view: GA4 {
     hidden: yes
     sql:${TABLE}.page_view_flag ;;
   }
-  measure: events_count {
-    type: sum
-    sql: ${event_name} ;;
+  measure: count_of_events {
+    type: count
   }
   measure: video_completes {
     type: sum
@@ -463,5 +462,64 @@ view: GA4 {
   } #two decimal
   measure: page_views_per_visit{
     sql: ${total_page_views}/ ${visits};;
+  }
+  measure: article_views_per_visit{
+    precision: 2
+    sql: ${total_article_views}/ ${visits};;
+  }
+  measure: page_views_per_user{
+    precision: 2
+    sql: ${total_page_views}/ ${users};;
+  }
+  measure: article_views_per_user{
+    precision: 2
+    sql: ${total_article_views}/ ${users};;
+  }
+  measure: percentage_new_users {
+    sql: (${new_users}/${users})*100;;
+  }
+  measure: Homepage_views{
+    type: sum
+    sql: case when ${event_name} in ('page_view')
+                and (${page_location} = 'https://metro.co.uk/')
+                OR CONTAINS_SUBSTR(${page_location},'https://metro.co.uk/?') then 1
+          when ${event_name} in ('screen_view')
+            and  ${platform} = 'IOS'
+            and CONTAINS_SUBSTR(page_location,'/metronewsiphone/top-stories/home') then 1
+          when ${event_name} in ('screen_view')
+            and  ${platform} = 'ANDROID'
+            and CONTAINS_SUBSTR(page_location,'/metroandroid/top-stories/home') then 1
+          else null end;;
+  }
+  measure: Homepage_entries{
+    type: sum
+    sql: case when ${event_name} in ('page_view')
+                and is_entrance = TRUE
+                and (${page_location} = 'https://metro.co.uk/')
+                OR CONTAINS_SUBSTR(${page_location},'https://metro.co.uk/?') then 1
+          when ${event_name} in ('screen_view')
+            and  ${platform} = 'IOS'
+            and CONTAINS_SUBSTR(${page_location},'/metronewsiphone/top-stories/home') then 1
+          when ${event_name} in ('screen_view')
+            and is_entrance = TRUE
+            and  ${platform} = 'ANDROID'
+            and CONTAINS_SUBSTR(${page_location},'/metroandroid/top-stories/home') then 1
+          else null end;;
+  }
+  measure: events_per_visit{
+    precision: 2
+    sql: ${count_of_events}/${visits};;
+  }
+  measure: events_per_user{
+    precision: 2
+    sql: ${count_of_events}/${users};;
+  }
+  measure: video_views_per_visit{
+    precision: 2
+    sql: ${total_video_views}/${visits};;
+  }
+  measure: video_views_per_user{
+    precision: 2
+    sql: ${total_video_views}/${users};;
   }
 }
