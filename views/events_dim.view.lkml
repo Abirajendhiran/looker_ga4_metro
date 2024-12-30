@@ -437,10 +437,10 @@ view: GA4 {
     sql: ${time_spent_on_page} ;;
   }
   measure: avg_session_duration_sec {
-    sql: ${sum_time_on_page}/${visits}/1000000;;
+    sql: ROUND(${sum_time_on_page}/${visits}/1000000,2);;
   }#no decimal
   measure: avg_time_on_page_sec {
-    sql: (${sum_time_on_page}/1000000)/count(case when ${time_spent_on_page}>0 and ${event_name} in ('page_view','screen_view')then ${event_name} else null end) ;;
+    sql: ROUND((${sum_time_on_page}/1000000)/count(case when ${time_spent_on_page}>0 and ${event_name} in ('page_view','screen_view')then ${event_name} else null end),2) ;;
   }
   measure: engaged_sessions {
     type: count_distinct
@@ -455,17 +455,16 @@ view: GA4 {
     sql: case when ${event_name} in ('page_view','screen_view') and ${is_exit} is true then 1 else null end;;
   }
   measure: engagement_rate {
-    sql: ${engaged_sessions}/ ${visits};;
+    sql: ROUND(${engaged_sessions}/ ${visits},2);;
   }
   measure: visits_per_user {
-    sql: ${visits}/${users};;
-  } #two decimal
+    sql: ROUND(${visits}/${users},2);;
+  }
   measure: page_views_per_visit{
-    sql: ${total_page_views}/ ${visits};;
+    sql: ROUND(${total_page_views}/ ${visits},2);;
   }
   measure: article_views_per_visit{
-    precision: 2
-    sql: ${total_article_views}/ ${visits};;
+    sql: ROUND(${total_article_views}/ ${visits},2);;
   }
   measure: page_views_per_user{
     precision: 2
@@ -507,19 +506,15 @@ view: GA4 {
           else null end;;
   }
   measure: events_per_visit{
-    precision: 2
-    sql: ${count_of_events}/${visits};;
+    sql: ROUND(${count_of_events}/${visits},2);;
   }
   measure: events_per_user{
-    precision: 2
-    sql: ${count_of_events}/${users};;
+    sql: ROUND(${count_of_events}/${users},2);;
   }
   measure: video_views_per_visit{
-    precision: 2
-    sql: ${total_video_views}/${visits};;
+    sql: ROUND(${total_video_views}/${visits},2);;
   }
   measure: video_views_per_user{
-    precision: 2
-    sql: ${total_video_views}/${users};;
+    sql: ROUND(${total_video_views}/${users},2);;
   }
 }
