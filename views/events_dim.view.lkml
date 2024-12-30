@@ -472,7 +472,7 @@ view: GA4 {
     sql: ${total_page_views}/ ${users};;
   }
   measure: article_views_per_user{
-    sql: ROUND(${total_article_views}/ ${users},2)
+    sql: ROUND(${total_article_views}/ ${users},2);;
   }
   measure: percentage_new_users {
     sql: (${new_users}/${users})*100;;
