@@ -467,8 +467,7 @@ view: GA4 {
     sql: ROUND(${total_article_views}/ ${visits},2);;
   }
   measure: page_views_per_user{
-    precision: 2
-    sql: ${total_page_views}/ ${users};;
+    sql: ROUND(${total_page_views}/ ${users},2);;
   }
   measure: article_views_per_user{
     sql: ROUND(${total_article_views}/ ${users},2);;
