@@ -481,8 +481,8 @@ view: GA4 {
   measure: Homepage_views{
     type: sum
     sql: case when ${event_name} in ('page_view')
-                and (${page_location} = 'https://metro.co.uk/')
-                OR CONTAINS_SUBSTR(${page_location},'https://metro.co.uk/?') then 1
+                and ((${page_location} = 'https://metro.co.uk/')
+                OR CONTAINS_SUBSTR(${page_location},'https://metro.co.uk/?')) then 1
           when ${event_name} in ('screen_view')
             and  ${platform} = 'IOS'
             and CONTAINS_SUBSTR(page_location,'/metronewsiphone/top-stories/home') then 1
@@ -495,9 +495,10 @@ view: GA4 {
     type: sum
     sql: case when ${event_name} in ('page_view')
                 and is_entrance = TRUE
-                and (${page_location} = 'https://metro.co.uk/')
-                OR CONTAINS_SUBSTR(${page_location},'https://metro.co.uk/?') then 1
+                and ((${page_location} = 'https://metro.co.uk/')
+                OR CONTAINS_SUBSTR(${page_location},'https://metro.co.uk/?')) then 1
           when ${event_name} in ('screen_view')
+            and is_entrance = TRUE
             and  ${platform} = 'IOS'
             and CONTAINS_SUBSTR(${page_location},'/metronewsiphone/top-stories/home') then 1
           when ${event_name} in ('screen_view')
