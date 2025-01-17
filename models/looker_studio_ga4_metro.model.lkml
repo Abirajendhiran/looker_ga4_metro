@@ -9,7 +9,7 @@ include: "/views/**/*.view.lkml"
 
 datagroup: looker_ga4_metro_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  max_cache_age: "14 hours"
 }
 
 persist_with: looker_ga4_metro_default_datagroup
