@@ -329,6 +329,7 @@ view: GA4 {
   }
   dimension: unique_session_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.unique_session_id ;;
   }
   dimension: user_first_touch_timestamp {
@@ -337,6 +338,7 @@ view: GA4 {
   }
   dimension: user_pseudo_id {
     type: string
+    hidden: yes
     sql: ${TABLE}.user_pseudo_id ;;
   }
   dimension: value {
