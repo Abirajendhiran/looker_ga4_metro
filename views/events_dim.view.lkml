@@ -629,6 +629,26 @@ view: GA4 {
       label: "Break down by Rend.Platform"
       value: "rend.plaform"
     }
+    allowed_value: {
+      label: "No Breakdown"
+      value: "total"
+    }
+    allowed_value: {
+      label: "Break down by Geo"
+      value: "geo"
+    }
+    allowed_value: {
+      label: "Break down by Traffic Channel"
+      value: "channel"
+    }
+    allowed_value: {
+      label: "Break down by Product"
+      value: "product"
+    }
+    allowed_value: {
+      label: "Break down by Rend.Platform"
+      value: "rend.plaform"
+    }
   }
 
   dimension: chart_breakdown {
@@ -644,6 +664,14 @@ view: GA4 {
       ${platform}
     {% elsif dimension_chart_breakdown._parameter_value == 'rend.plaform' %}
       ${rendered_platform}
+    {% elsif date_granularity_param._parameter_value == 'day' %}
+      ${ga_date}
+    {% elsif date_granularity_param._parameter_value == 'week' %}
+    date_trunc(${ga_date},week(monday))
+    {% elsif date_granularity_param._parameter_value == 'month' %}
+      date_trunc(${ga_date},month)
+    {% elsif date_granularity_param._parameter_value == 'year' %}
+      date_trunc(${ga_date},year)
     {% endif %};;
   }
 }
