@@ -609,6 +609,10 @@ view: GA4 {
   parameter: dimension_chart_breakdown {
     type: unquoted
     allowed_value: {
+      label: "No Breakdown"
+      value: "total"
+    }
+    allowed_value: {
       label: "Break down by Geo"
       value: "geo"
     }
@@ -632,6 +636,8 @@ view: GA4 {
     sql:
     {% if dimension_chart_breakdown._parameter_value == 'channel' %}
       ${url_channel}
+    {% elsif dimension_chart_breakdown._parameter_value == 'total' %}
+      "Total"
     {% elsif dimension_chart_breakdown._parameter_value == 'geo' %}
       ${geo_grouping}
     {% elsif dimension_chart_breakdown._parameter_value == 'product' %}
