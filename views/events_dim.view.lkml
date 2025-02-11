@@ -596,9 +596,9 @@ view: GA4 {
     type: date
     sql:
     {% if date_granularity_param._parameter_value == 'day' %}
-    sql: ${ga_date}
+      ${ga_date}
     {% elsif date_granularity_param._parameter_value == 'month' %}
-    sql: ${ga_month}
+      ${ga_month}
     {% endif %};;
   }
 }
