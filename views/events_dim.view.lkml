@@ -523,16 +523,21 @@ view: GA4 {
     type: unquoted
     allowed_value: {
       label: "Total Page Views"
-      value: "total_page_views"
+      value: "total_pv"
     }
     allowed_value: {
       label: "Total Visits"
-      value: "visits"
+      value: "total_vst"
     }
   }
 
   measure: dynamic_sum {
     type: sum
-    sql: ${TABLE}.{% parameter chart_metric %} ;;
+    sql:
+       {% if chart_metric._parameter_value == 'total_pv' %}
+          ${total_article_views}
+        {% elsif chart_metric._parameter_value == 'total_vst' %}
+        ${visits}
+      {% endif %};;
   }
 }
