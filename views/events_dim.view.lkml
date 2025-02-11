@@ -593,7 +593,6 @@ view: GA4 {
   }
 
   dimension: period_granularity {
-    type: date
     sql:
     {% if date_granularity_param._parameter_value == 'day' %}
       ${ga_date}
