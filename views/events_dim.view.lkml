@@ -630,27 +630,23 @@ view: GA4 {
       value: "rend.plaform"
     }
     allowed_value: {
-      label: "No Breakdown"
-      value: "total"
+      label: "Break down by Day"
+      value: "day"
     }
     allowed_value: {
-      label: "Break down by Geo"
-      value: "geo"
+      label: "Break down by Week"
+      value: "week"
     }
-    allowed_value: {
-      label: "Break down by Traffic Channel"
-      value: "channel"
-    }
-    allowed_value: {
-      label: "Break down by Product"
-      value: "product"
-    }
-    allowed_value: {
-      label: "Break down by Rend.Platform"
-      value: "rend.plaform"
-    }
-  }
 
+    allowed_value: {
+      label: "Break down by Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Break down by Year"
+      value: "year"
+  }
+}
   dimension: chart_breakdown {
     type:  string
     sql:
