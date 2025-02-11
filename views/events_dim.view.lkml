@@ -532,6 +532,7 @@ view: GA4 {
   }
 
   measure: dynamic_sum {
+    type:  number
     sql:
        {% if chart_metric._parameter_value == 'total_pv' %}
           ROUND(${total_article_views},0)
