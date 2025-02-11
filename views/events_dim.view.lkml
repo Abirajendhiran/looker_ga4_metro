@@ -519,4 +519,20 @@ view: GA4 {
     sql: ROUND(${total_video_views}/${users},2);;
   }
 
+  parameter: chart_metric {
+    type: unquoted
+    allowed_value: {
+      label: "Total Page Views"
+      value: "total_page_views"
+    }
+    allowed_value: {
+      label: "Total Visits"
+      value: "visits"
+    }
+  }
+
+  measure: dynamic_sum {
+    type: sum
+    sql: ${TABLE}.{% parameter chart_metric %} ;;
+  }
 }
