@@ -534,8 +534,10 @@ view: GA4 {
   measure: dynamic_sum {
     sql:
        {% if chart_metric._parameter_value == 'total_pv' %}
+          type : sum
           ${total_article_views}
         {% elsif chart_metric._parameter_value == 'total_vst' %}
+        type : sum
         ${visits}
       {% endif %};;
   }
