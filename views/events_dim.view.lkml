@@ -519,7 +519,7 @@ view: GA4 {
     sql: ROUND(${total_video_views}/${users},2);;
   }
 
-  parameter: chart_metric {
+  parameter: chart_metric_selector {
     type: unquoted
     allowed_value: {
       label: "Total Page Views"
@@ -529,15 +529,45 @@ view: GA4 {
       label: "Total Visits"
       value: "total_vst"
     }
+    allowed_value: {
+      label: "Total User"
+      value: "total_usr"
+    }
+    allowed_value: {
+      label: "Total Article Views"
+      value: "total_art"
+    }
+    allowed_value: {
+      label: "Total Video Views"
+      value: "total_vv"
+    }
+    allowed_value: {
+      label: "Page Views / Visit"
+      value: "total_pv_vst"
+    }
+    allowed_value: {
+      label: "Avg Session Duration"
+      value: "avg_session_dur"
+    }
   }
 
-  measure: dynamic_sum {
+  measure: chart_metric {
     type:  number
     sql:
-       {% if chart_metric._parameter_value == 'total_pv' %}
-          ROUND(${total_article_views},0)
-        {% elsif chart_metric._parameter_value == 'total_vst' %}
-          ROUND(${visits},0)
-      {% endif %};;
+        {% if chart_metric_selector._parameter_value == 'total_art' %}
+              ${total_article_views}
+        {% elsif chart_metric_selector._parameter_value == 'total_vst' %}
+              ${visits}
+        {% elsif chart_metric_selector._parameter_value == 'total_usr' %}
+              ${users}
+        {% elsif chart_metric_selector._parameter_value == 'total_pv' %}
+              ${total_page_views}
+        {% elsif chart_metric_selector._parameter_value == 'total_vv' %}
+              ${total_video_views}
+        {% elsif chart_metric_selector._parameter_value == 'total_pv_vst' %}
+              ${page_views_per_visit}
+        {% elsif chart_metric_selector._parameter_value == 'avg_session_dur' %}
+              ${avg_session_duration_sec}
+          {% endif %};;
   }
 }
