@@ -570,4 +570,35 @@ view: GA4 {
               ${avg_session_duration_sec}
           {% endif %};;
   }
+
+  parameter: date_granularity_param {
+    type: unquoted
+    allowed_value: {
+      label: "Break down by Day"
+      value: "day"
+    }
+    allowed_value: {
+      label: "Break down by Week"
+      value: "week"
+    }
+
+    allowed_value: {
+      label: "Break down by Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Break down by Year"
+      value: "year"
+    }
+  }
+
+  dimension: period_granularity {
+    type: date
+    sql:
+    {% if date_granularity_param._parameter_value == 'day' %}
+    sql: ${ga_date}
+    {% elsif date_granularity_param._parameter_value == 'month' %}
+    ql: ${ga_month}
+    {% endif %};;
+  }
 }
