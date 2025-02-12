@@ -673,7 +673,6 @@ view: GA4 {
   measure: rolling_30_day_avg_visits {
     type: number
     sql: AVG(${visits}) OVER (
-         PARTITION BY ${ga_date}
          ORDER BY ${ga_date}
          ROWS BETWEEN 29 PRECEDING AND CURRENT ROW
        ) ;;
