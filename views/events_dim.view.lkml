@@ -670,11 +670,5 @@ view: GA4 {
     {% endif %};;
   }
 
-  measure: visit_30day_avg {
-    type: average
-    sql: CASE
-         WHEN ${ga_date} >= DATE_SUB(${ga_date}, INTERVAL 29 DAY) THEN ${visits}
-         ELSE NULL
-       END ;;
-  }
+
 }
