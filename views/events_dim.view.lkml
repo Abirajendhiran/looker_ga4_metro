@@ -669,4 +669,10 @@ view: GA4 {
       date_trunc(${ga_date},year)
     {% endif %};;
   }
+
+  measure: avg_visit_last_30_days {
+    type: average
+    sql: ${visits} ;;
+    filters: [ga_date: "30 days"]
+  }
 }
