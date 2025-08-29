@@ -235,7 +235,6 @@ view: GA4 {
     type: time
     timeframes: [raw, date, week, month, quarter, year]
     convert_tz: no
-    datatype: date
     sql: ${TABLE}.ga_date ;;
   }
   dimension: geo_city {
