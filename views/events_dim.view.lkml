@@ -521,4 +521,5 @@ view: GA4 {
   measure: video_views_per_user{
     sql: ROUND(${total_video_views}/${users},2);;
   }
+
 }
