@@ -231,14 +231,11 @@ view: GA4 {
     hidden: yes
     sql: ${TABLE}.met_calc_video_advert_starts ;;
   }
-  dimension: ga_date {
-    type: string
-    sql: ${TABLE}.ga_date ;;
-  }
   dimension_group: ga {
     type: time
     timeframes: [raw, week, month, quarter, year]
     convert_tz: no
+    datatype: date
     sql: ${TABLE}.ga_date ;;
   }
   dimension: geo_city {
