@@ -233,7 +233,7 @@ view: GA4 {
   }
   dimension_group: ga {
     type: time
-    timeframes: [raw, week, month, quarter, year]
+    timeframes: [raw, date,week, month, quarter, year]
     convert_tz: no
     datatype: date
     sql: ${TABLE}.ga_date ;;
