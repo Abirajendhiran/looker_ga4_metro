@@ -386,6 +386,10 @@ view: GA4 {
     hidden: yes
     sql:${TABLE}.page_view_flag ;;
   }
+  dimension: engagement_group {
+    type: string
+    sql:${TABLE}.engagement_group ;;
+  }
   measure: count_of_events {
     type: count
   }
